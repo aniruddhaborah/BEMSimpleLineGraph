@@ -278,6 +278,8 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 /// Color of the pop up label's background displayed when the user touches the graph.
 @property (strong, nonatomic) UIColor *colorBackgroundPopUplabel;
 
+/// Enable Animation of Dots
+@property (strong, nonatomic) BOOL animateDots;
 
 @end
 

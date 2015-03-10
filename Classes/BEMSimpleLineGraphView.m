@@ -141,6 +141,7 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
     _alphaBackgroundXaxis = 1.0;
     _colorBackgroundYaxis = nil;
     _alphaBackgroundYaxis = 1.0;
+    _animateDots = YES;
     
     // Set Alpha Values
     _alphaTop = 1.0;
@@ -452,21 +453,21 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
             }
             
             // Dot entrance animation
-            // if (self.animationGraphEntranceTime == 0) {
-            //     if (self.alwaysDisplayDots == NO) {
-            //         circleDot.alpha = 0;  // never reach here
-            //     } else circleDot.alpha = 0.7;
-            // } else {
-            //     [UIView animateWithDuration:(float)self.animationGraphEntranceTime/numberOfPoints delay:(float)i*((float)self.animationGraphEntranceTime/numberOfPoints) options:UIViewAnimationOptionCurveLinear animations:^{
-            //         circleDot.alpha = 0.7;
-            //     } completion:^(BOOL finished) {
-            //         if (self.alwaysDisplayDots == NO) {
-            //             [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            //                 circleDot.alpha = 0;
-            //             } completion:nil];
-            //         }
-            //     }];
-            // }
+            if (self.animationGraphEntranceTime == 0 || _animateDots == NO) {
+                if (self.alwaysDisplayDots == NO) {
+                    circleDot.alpha = 0;  // never reach here
+                } else circleDot.alpha = 0.7;
+            } else {
+                [UIView animateWithDuration:(float)self.animationGraphEntranceTime/numberOfPoints delay:(float)i*((float)self.animationGraphEntranceTime/numberOfPoints) options:UIViewAnimationOptionCurveLinear animations:^{
+                    circleDot.alpha = 0.7;
+                } completion:^(BOOL finished) {
+                    if (self.alwaysDisplayDots == NO) {
+                        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                            circleDot.alpha = 0;
+                        } completion:nil];
+                    }
+                }];
+            }
         }
     }
     
