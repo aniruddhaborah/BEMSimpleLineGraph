@@ -279,7 +279,7 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 @property (strong, nonatomic) UIColor *colorBackgroundPopUplabel;
 
 /// Enable Animation of Dots
-@property (strong, nonatomic) BOOL animateDots;
+@property (nonatomic) BOOL animateDots;
 
 @end
 
