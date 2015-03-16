@@ -437,6 +437,19 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
 
             BEMCircle *circleDot = [[BEMCircle alloc] initWithFrame:CGRectMake(0, 0, self.sizePoint, self.sizePoint)];
             circleDot.center = CGPointMake(positionOnXAxis, positionOnYAxis);
+            
+            if (i == numberOfPoints - 1) {
+                _lastX = circleDot.center.x;
+                _lastY = circleDot.center.y;
+                NSLog(@"Last %@", NSStringFromCGPoint(circleDot.center));
+            } else {
+                if (i == numberOfPoints - 2) {
+                    _prevX = circleDot.center.x;
+                    _prevY = circleDot.center.y;
+                    NSLog(@"Prev %@", NSStringFromCGPoint(circleDot.center));
+                }
+            }
+            
             circleDot.tag = i+ DotFirstTag100;
             circleDot.alpha = 0;
             circleDot.absoluteValue = dotValue;
@@ -482,6 +495,7 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
     }
     
     BEMLine *line = [[BEMLine alloc] initWithFrame:CGRectMake(self.YAxisLabelXOffset, 0, self.frame.size.width - self.YAxisLabelXOffset, self.frame.size.height)];
+    _graphLine = line;
     line.opaque = NO;
     line.alpha = 1;
     line.backgroundColor = [UIColor clearColor];

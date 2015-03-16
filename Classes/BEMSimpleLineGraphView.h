@@ -138,7 +138,7 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 /// Time of the animation when the graph appears in seconds. Default value is 1.5.
 @property (nonatomic) CGFloat animationGraphEntranceTime;
 
-
+@property (nonatomic) BEMLine *graphLine;
 /** Animation style used when the graph appears. Default value is BEMLineAnimationDraw.
  @see Refer to \p BEMLineAnimation for a complete list of animation styles. */
 @property (nonatomic) BEMLineAnimation animationGraphStyle;
@@ -250,6 +250,8 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 /// The width of the line that appears when the user touches the graph.
 @property (nonatomic) CGFloat widthTouchInputLine;
 
+/// Position of hte last point in graph
+@property (nonatomic) CGFloat lastX, lastY, prevX, prevY;
 
 /// Color of the label's text displayed on the X-Axis. Defaut value is blackColor.
 @property (strong, nonatomic) IBInspectable UIColor *colorXaxisLabel;
